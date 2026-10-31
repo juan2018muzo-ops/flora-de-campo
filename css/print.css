@@ -1,0 +1,44 @@
+/* Impresión y PDF: ficha, álbum de hojas y clave dicotómica.
+   Se oculta todo lo que es navegación o control; queda solo el documento. */
+
+@page { size: letter; margin: 1.6cm 1.5cm; }
+
+body { background: #fff; padding: 0; font-size: 11pt; color: #000; }
+.cabecera, .pestanas, .no-imprimir, .aviso, .resumen-flotante, dialog, .advertencia { display: none !important; }
+.solo-imprimir { display: block; }
+main { max-width: none; padding: 0; }
+a { color: inherit; text-decoration: none; }
+.bloque, .clave-documento, .album-entrada, .termino, .resultado { border: 0; box-shadow: none; }
+
+/* Ficha botánica */
+.ficha-membrete { font-size: 9pt; color: #555; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 4pt; }
+.ficha-cabecera { border-bottom: 1.5pt solid #000; }
+.ficha-cabecera h3 { font-size: 20pt; }
+.galeria { grid-template-columns: repeat(3, 1fr); }
+.galeria figure { break-inside: avoid; }
+.galeria img { aspect-ratio: 4 / 3; }
+.ficha-bloque, .ficha-categoria { break-inside: avoid; }
+.datos, .rasgos { grid-template-columns: 1fr 1fr; column-gap: 14pt; }
+.datos > div, .rasgos > div { border-bottom: .5pt dotted #999; font-size: 9.5pt; }
+
+/* Álbum: dos entradas por página, foto grande */
+.album-titulo { font: 600 18pt var(--serif); margin: 0 0 8pt; }
+.album { display: block; }
+.album-grupo { break-after: avoid; margin-top: 0; }
+.album-entrada {
+  display: grid; grid-template-columns: 1fr; break-inside: avoid;
+  margin-bottom: .6cm; border: .5pt solid #999 !important; border-radius: 0;
+}
+.album-entrada:nth-of-type(2n) { break-after: page; }
+.album-entrada img { height: 7.2cm; max-height: none; width: 100%; object-fit: contain; background: #fff; border-bottom: .5pt solid #ccc; }
+.album-datos { padding: 6pt 8pt; font-size: 9.5pt; }
+.album-datos dl { grid-template-columns: 1fr 1fr; column-gap: 12pt; }
+.album-datos dl > div { grid-template-columns: 7.5em 1fr; }
+
+/* Clave */
+.clave-documento { padding: 0; }
+.clave-titulo { font-size: 16pt; }
+.alternativa { break-inside: avoid; flex-wrap: nowrap; }
+.alternativa.a { break-after: avoid; border-top: .5pt solid #ccc; }
+.clave-puntos { border-bottom: 1pt dotted #000; }
+.indistinguible { color: #000; }
